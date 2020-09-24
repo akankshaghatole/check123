@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood bank</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
+    
+</head>
+
+<body>
+  
+  
+  <div class="header">
+    <h2>Life Positive  </h2>
+    <h4> Donate Blood & Save Life</h4>
+  </div>
+
+  <div class="menu" id="navbar">
+    <ul>
+      <a class="active" href="#Home">Home</a>
+      <a href="#Form">Registration Form</a>
+      <a href="#Details ">Show Registration Details </a>
+    </ul>
+    
+  </div>
+  <section id="Home" class="section1">
+    <div class="content">
+      <h4>Blood & Save Life </h4>
+      <p>Whether a patient receives whole blood, red cells, platelets or plasma, this lifesaving care star
+        ts with one person making a generous donation. The Red Cross holds about 500 blood drives every day.
+          </p>
+      <p>Donating blood is one of the greatest ways to help humankind. By doing so, 
+        we save someone’s precious life, and that is a blessing in itself. 
+        There are people who hesitate to donate blood if they aren’t given monetary returns 
+        or because of the various myths surrounding it.</p>
+
+        <p>Blood donation is healthy for our body because it makes our blood less viscose which will help in combating
+           cardiovascular and other diseases. 38% of the population all over the world is capable of donating blood; however,
+            less than 10% do so. There are many people who die because of shortage of blood while undergoing treatment.</p>
+            <div class="image">
+              <img  src="icons/im2.jpg"  width="400" height="300" ><br>
+              <b>1 donation can potentially save up to 3 lives.</b>
+            </div>
+        <p><b>Hero come in all the form . Any one can donate blood above 18 . If you wish to help the needy people
+           you can contact us or fill the regidtration form below .</b></p>
+          </div>
+         
+           
+          
+  </section>
+
+  <hr>
+  
+  <section id="Form" class="section2">
+    
+    
+
+    <div class = "form">
+      <form name="myForm"  onsubmit="return validateForm();" method="post">
+            <fieldset>
+                    <legend>Register here</legend>
+              <div class="input">Name: <input  id = 'name' type='text' name = 'name'required></div>
+              <div class ="input">Email: <input id = 'email' type='email' name = 'email'required></div>
+              <div class ="input">Age: <input id = 'age' type='number' name = 'age'></div>
+              <div class="input " for="phone">Phone :
+                <input type="tel" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" required><br>
+              <div class="input">Blood Group: <input  id = 'bloodgroup'  name = 'bloodgroup'required><SELECT name="group">
+                <OPTION value="in">O+</OPTION>
+                <OPTION value="de">A+</OPTION>
+                <OPTION value="fr">A-</OPTION>
+                <OPTION value="us">B+</OPTION>
+                <OPTION value="ch">B-</OPTION>
+                <OPTION value="in">O-</OPTION>
+              </SELECT></div>
+
+              Gender<br/>
+              <div class="input"><input type="radio" name="sex" value="male" checked>Male</div>
+              <div class="input"><input type="radio" name="sex" value="female" checked>Female</div>
+              <div class="input"><input type="radio" name="sex" value="other" checked>Other</div>
+    
+    
+            
+    
+              Notify me by:<br>
+             <label> <input type="checkbox" name="contact1" value="Bike">Contact me via email</label>
+      
+              <label> <input type="checkbox" name="contact2" value="Bike">Contact me via phone</label><br>
+                  
+              <label>Did you donate blood before ? If yes mention number  <input type="number" name="numberInput" min="1" max="5"></label><br>
+      
+              
+              <button id ="enter" type="button" onclick="myFunct();">enter</button>
+            </fieldset>
+        </form>
+       
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="Details" class="section3">
+    <div class="container">
+      <div class="content-first">
+        <h4 class="text">LIST OF PEOPLE REGISTERED:- </h4>
+       
+
+         
+        <table id="table"></table>
+       
+      </div>
+    </div>
+  </section>
+  <br><br><br><br>
+  <hr>
+  <script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+    if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+    } else {
+    navbar.classList.remove("sticky");
+    }
+    }
+  </script>
+  <script>
+      function myFunct() {
+      
+      var a = document.getElementById("name").value;
+      if (a == "")
+      {
+        alert("Name must be filled out");
+        return false;
+      }
+      
+      var ph = document.getElementById("phone").value;
+      if (ph == "")
+      {
+        alert("Phone Number should be filled");
+        return false;
+      }
+      y = parseInt(ph);
+      if(y>10000000000 || y <1000000000 || isNaN(zz))
+      {
+        alert("Enter a valid phone number");
+        return false;
+      }
+      var e= document.getElementById("email").value;
+      if (e == "")
+      {
+        alert("EMAIL must be filled out");
+        return false;
+      }
+      var n = e.includes("@");
+      if(n==false)
+      {
+        alert("Enter a valid Email address")
+        return false
+      }
+
+      var b = document.getElementById("age").value;
+      if (b == "")
+      {
+        alert("Age must be filled out");
+        return false;
+      }
+      var b = document.getElementById("bloodgroup").value;
+      if (b == "")
+      {
+        alert("Blood group must be filled out");
+        return false;
+      }
+
+    
+  
+    
+
+    
+      var table = document.getElementById("table");
+      var row = table.insertRow(0);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      cell1.innerHTML = document.getElementById("name").value;
+      cell2.innerHTML = document.getElementById("email").value;
+      cell3.innerHTML = document.getElementById("age").value;
+
+      document.getElementById("name1").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("age").value = "";
+      document.getElementById("phone").value = "";
+      document.getElementById("bloodgroup").value = "";
+
+    }
+
+  
+  </script>
+    
+
+
+
+
+
+
+
+    <div class="footer">
+        <a href="https://www.facebook.com"><img src="icons/facebook.png" alt="" class="app-logo"></a>
+        <a href="https://www.instagram.com/"><img src="icons/instagram.png" alt="" class="app-logo"></a>
+        <a href="https://www.youtube.com"><img src="icons/youtube.png" alt="" class="app-logo"></a>
+        <span class="padding"></span>
+        <a href="https://www.google.co.in/maps"><img src="icons/location.png" alt="" class="app-logo"></a><br><br><br><br><br><br>
+    </div>
+    <br><br><br><br><br><br>
+
+
+   
+</body>
+</html>
+
+
+
+
